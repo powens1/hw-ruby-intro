@@ -32,13 +32,16 @@ def sum_to_n?(array,n)
 	elsif array.length == 1
 		return false
 	else
+		counter = 0
 		array.permutation(2).to_a.each do |x|
 			total = x[0] + x[1]
 			if total == n
 				return true
-			else
-				return false
 			end
+			counter = counter + 1
+		end
+		if counter > 0
+			return false
 		end
 	end
 end
