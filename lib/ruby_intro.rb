@@ -119,7 +119,33 @@ end
 # Part 3
 
 class BookInStock
+	#getter/setter
+	attr_accessor :isbn, :price
+	
 
+
+	#constructor, takes two parameters
+	def initialize(isbn, price)
+		#error handling if isbn is empty or price is less than or equal to zero
+		if isbn.empty? || price <= 0
+			raise ArgumentError.new("Improper ISBN given!")
+		end
+		
+		@isbn = isbn
+		@price = price
+	end
+	
+	#defining price_as_string
+	def price_as_string
+		string_price = price.to_f.to_s
+		decimal_index = string_price.index(".")
+		if string_price[decimal_index + 2].nil?
+				string_price = string_price + "0"
+		end
+		return "$" + string_price
+	end
+
+	
 end
 
 
